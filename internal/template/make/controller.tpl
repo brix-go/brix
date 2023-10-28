@@ -1,8 +1,10 @@
-package {{ .FileNameTitleLower }}
+package controller
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"{{ .ProjectName }}/internal/service"
+	"{{ .ProjectName }}/internal/domain/{{ .FileNameTitleLower }}"
+	"testdd/shared"
+	middleware "testdd/middleware/error"
 )
 
 func NewController(service {{ .FileNameTitleLower }}.{{ .FileName }}Service) {{ .FileNameTitleLower }}.{{ .FileName }}Controller {
@@ -12,7 +14,6 @@ func NewController(service {{ .FileNameTitleLower }}.{{ .FileName }}Service) {{ 
 }
 
 type {{ .FileNameTitleLower }}Controller struct {
-	*Handler
 	{{ .FileNameTitleLower }}Service service.{{ .FileName }}Service
 }
 

@@ -11,10 +11,10 @@ func NewRepository(db *gorm.DB) {{ .FileNameTitleLower }}.{{ .FileName }}Reposit
 	}
 }
 
-type userRepository struct {
+type {{ .FileNameTitleLower }}Repository struct {
 	db *gorm.DB
 }
 
-func (r *userRepository) Add() (error) {
-	return updatedUser, nil
+func (r *{{ .FileNameTitleLower }}Repository) Add() (error) {
+	return nil
 }

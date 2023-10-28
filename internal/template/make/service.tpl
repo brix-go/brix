@@ -2,7 +2,6 @@ package service
 
 import (
 	"{{ .ProjectName }}/internal/domain/{{ .FileNameTitleLower }}"
-	"{{ .ProjectName }}/internal/domain/{{ .FileNameTitleLower }}/repository"
 )
 
 func NewService(repo {{ .FileNameTitleLower }}.{{ .FileName }}Repository) {{ .FileNameTitleLower }}.{{ .FileName }}Service {
@@ -13,7 +12,7 @@ func NewService(repo {{ .FileNameTitleLower }}.{{ .FileName }}Repository) {{ .Fi
 }
 
 type {{ .FileNameTitleLower }}Service struct {
-	repo user.UserRepository
+	repo {{ .FileNameTitleLower }}.{{ .FileName }}Repository
 }
 
 func (s *{{ .FileNameTitleLower }}Service) Add() (err error) {
