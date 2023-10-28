@@ -115,7 +115,7 @@ func runCreate(cmd *cobra.Command, args []string) {
 
 func (c *Create) genFile() {
 	var f *os.File
-	filePath := c.FilePathc
+	filePath := c.FilePath
 	if filePath == "" {
 		filePath = fmt.Sprintf("internal/domain/%s/", strings.ToLower(c.FileName))
 	}
