@@ -32,9 +32,7 @@ var CmdCreate = &cobra.Command{
 	Short:   "gen a new controller/service/repository/model",
 	Example: "brix gen controller user",
 	Args:    cobra.ExactArgs(2),
-	Run: func(cmd *cobra.Command, args []string) {
-
-	},
+	Run:     runCreate,
 }
 var (
 	tplPath string
