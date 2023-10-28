@@ -17,7 +17,7 @@ var CmdRoot = &cobra.Command{
 	Use:     "brix",
 	Example: "brix new demo-api",
 	Short:   fmt.Sprintf("\n                               \n,-----.         ,--.           \n|  |) /_ ,--.--.`--',--.  ,--. \n|  .-.  \\|  .--',--. \\  `'  /  \n|  '--' /|  |   |  | /  /.  \\  \n`------' `--'   `--''--'  '--' \n                               \n%s", coloredText),
-	Version: fmt.Sprintf("\n                               \n,-----.         ,--.           \n|  |) /_ ,--.--.`--',--.  ,--. \n|  .-.  \\|  .--',--. \\  `'  /  \n|  '--' /|  |   |  | /  /.  \\  \n`------' `--'   `--''--'  '--' \n                               \nBrix %s - Copyright (c) 2023 Nunu\nReleased under the MIT License.\n\n", config.Version),
+	Version: fmt.Sprintf("\n                               \n,-----.         ,--.           \n|  |) /_ ,--.--.`--',--.  ,--. \n|  .-.  \\|  .--',--. \\  `'  /  \n|  '--' /|  |   |  | /  /.  \\  \n`------' `--'   `--''--'  '--' \n                               \nBrix %s - Copyright (c) 2023 Brix\nReleased under the MIT License.\n\n", config.Version),
 }
 
 func init() {
