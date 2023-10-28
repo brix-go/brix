@@ -3,8 +3,10 @@ package brix
 import (
 	"fmt"
 	"github.com/brix-go/brix/config"
+	"github.com/brix-go/brix/internal/command/gen"
 	"github.com/brix-go/brix/internal/command/init"
 	"github.com/brix-go/brix/internal/command/run"
+	"github.com/brix-go/brix/internal/command/upgrade"
 	"github.com/spf13/cobra"
 )
 
@@ -23,12 +25,12 @@ func init() {
 	//CmdRoot.AddCommand(create.CmdCreate)
 	CmdRoot.AddCommand(run.CmdRun)
 
-	//CmdRoot.AddCommand(upgrade.CmdUpgrade)
-	//create.CmdCreate.AddCommand(create.CmdCreateHandler)
-	//create.CmdCreate.AddCommand(create.CmdCreateService)
-	//create.CmdCreate.AddCommand(create.CmdCreateRepository)
-	//create.CmdCreate.AddCommand(create.CmdCreateModel)
-	//create.CmdCreate.AddCommand(create.CmdCreateAll)
+	CmdRoot.AddCommand(upgrade.CmdUpgrade)
+	gen.CmdCreate.AddCommand(gen.CmdCreateController)
+	gen.CmdCreate.AddCommand(gen.CmdCreateService)
+	gen.CmdCreate.AddCommand(gen.CmdCreateRepository)
+	gen.CmdCreate.AddCommand(gen.CmdCreateDomain)
+	gen.CmdCreate.AddCommand(gen.CmdCreateAll)
 
 	//CmdRoot.AddCommand(wire.CmdWire)
 	//wire.CmdWire.AddCommand(wire.CmdWireAll)

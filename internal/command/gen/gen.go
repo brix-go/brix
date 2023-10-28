@@ -41,7 +41,7 @@ var (
 )
 
 func init() {
-	CmdCreatecontroller.Flags().StringVarP(&tplPath, "tpl-path", "t", tplPath, "template path")
+	CmdCreateController.Flags().StringVarP(&tplPath, "tpl-path", "t", tplPath, "template path")
 	CmdCreateService.Flags().StringVarP(&tplPath, "tpl-path", "t", tplPath, "template path")
 	CmdCreateRepository.Flags().StringVarP(&tplPath, "tpl-path", "t", tplPath, "template path")
 	CmdCreateDomain.Flags().StringVarP(&tplPath, "tpl-path", "t", tplPath, "template path")
@@ -49,7 +49,7 @@ func init() {
 
 }
 
-var CmdCreatecontroller = &cobra.Command{
+var CmdCreateController = &cobra.Command{
 	Use:     "controller",
 	Short:   "gen a new controller",
 	Example: "brix gen controller user",
