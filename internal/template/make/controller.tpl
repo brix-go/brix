@@ -9,14 +9,14 @@ import (
 
 func NewController(service {{ .FileNameTitleLower }}.{{ .FileName }}Service) {{ .FileNameTitleLower }}.{{ .FileName }}Controller {
 	return &{{ .FileNameTitleLower }}Controller{
-		service: service,
+		{{ .FileNameTitleLower }}Service: service,
 	}
 }
 
 type {{ .FileNameTitleLower }}Controller struct {
-	{{ .FileNameTitleLower }}Service service.{{ .FileName }}Service
+	{{ .FileNameTitleLower }}Service {{ .FileNameTitleLower }}.{{ .FileName }}Service
 }
 
-func (c *userController) Add(ctx *fiber.Ctx) error {
+func (c *{{ .FileNameTitleLower }}Controller) Add(ctx *fiber.Ctx) error {
 	return middleware.ResponseSuccess(ctx, shared.RespSuccess, nil)
 }
