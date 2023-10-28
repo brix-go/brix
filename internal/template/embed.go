@@ -2,5 +2,5 @@ package template
 
 import "embed"
 
-//go:embed create/*.tpl
+//go:embed make/*.tpl
 var CreateTemplateFS embed.FS

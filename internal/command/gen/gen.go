@@ -133,7 +133,7 @@ func (c *Create) genFile() {
 	var t *template.Template
 	var err error
 	if tplPath == "" {
-		t, err = template.ParseFS(tpl.CreateTemplateFS, fmt.Sprintf("create/%s.tpl", c.CreateType))
+		t, err = template.ParseFS(tpl.CreateTemplateFS, fmt.Sprintf("make/%s.tpl", c.CreateType))
 	} else {
 		t, err = template.ParseFiles(path.Join(tplPath, fmt.Sprintf("%s.tpl", c.CreateType)))
 	}
