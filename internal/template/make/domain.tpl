@@ -24,7 +24,7 @@ type {{ .FileName }}Controller interface {
 	Add(ctx *fiber.Ctx) error
 }
 
-func (u *User) BeforeCreate(tx *gorm.DB) (err error) {
+func (u *{{ .FileName }}) BeforeCreate(tx *gorm.DB) (err error) {
 	u.ID = uuid.New().String()
 	return
 }
