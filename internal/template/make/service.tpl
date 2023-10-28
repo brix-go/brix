@@ -7,7 +7,6 @@ import (
 func NewService(repo {{ .FileNameTitleLower }}.{{ .FileName }}Repository) {{ .FileNameTitleLower }}.{{ .FileName }}Service {
 	return &{{ .FileNameTitleLower }}Service{
 		repo:        repo,
-		redisClient: redis,
 	}
 }
 
