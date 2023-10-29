@@ -78,7 +78,7 @@ To use Brix, you need to have the following software installed on your system:
 ## How to install Brix
 You can install Brix with the following command:
 ```bash
-go install github.com/brix-go/brix
+go install github.com/brix-go/brix@latest
 ```
 > Tips: If `go install` succeeds but the `brix` command is not recognized, it is because the environment variable is not configured. You can add the GOBIN directory to the environment variable.
 
