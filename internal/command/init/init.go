@@ -120,23 +120,36 @@ func (p *Project) cloneTemplate() (bool, error) {
 	if repoURL == "" {
 		layout := ""
 		prompt := &survey.Select{
-			Message: "Please select a layout:",
+			Message: "Please select a framework:",
 			Options: []string{
 				"Fiber",
+				"Gin Gonic",
+				"Mux",
 			},
 			Description: func(value string, index int) string {
 				if index == 1 {
-					return "A basic project structure"
+					return " - A project structure with gin framework"
 				}
-				return "It has rich functions such as db, jwt, redis, migration, test, etc"
+				if index == 2 {
+					return "- A project structure with mux framework"
+				}
+				return " - It has rich functions such as db, jwt, redis, migration, test, etc"
 			},
 		}
 		err := survey.AskOne(prompt, &layout)
 		if err != nil {
 			return false, err
 		}
-		if layout != "Basic" {
+		if layout == "Fiber" {
 			repo = config.FiberRepo
+		}
+		if layout == "Gin Gonic" {
+			fmt.Println("Sorry boilerplate for this framework not yet available: ")
+			return false, err
+		}
+		if layout == "Mux" {
+			fmt.Println("Sorry boilerplate for this framework not yet available: ")
+			return false, err
 		}
 		err = os.RemoveAll(p.ProjectName)
 		if err != nil {
