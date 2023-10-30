@@ -1,7 +1,7 @@
 package config
 
 var (
-	Version       = "1.0.17"
+	Version       = "1.0.18"
 	WireCmd       = "github.com/google/wire/cmd/wire@latest"
 	BrixCmd       = "github.com/brix-go/brix"
 	FiberRepo     = "https://github.com/brix-go/fiber-boilerplate"
