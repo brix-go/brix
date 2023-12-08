@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"github.com/gofiber/fiber/v2"
+	"github.com/gin-gonic/gin"
 	"{{ .ProjectName }}/internal/domain/{{ .FileNameTitleLower }}"
 	"{{ .ProjectName }}/shared"
 	middleware "{{ .ProjectName }}/middleware/error"
@@ -17,6 +17,7 @@ type {{ .FileNameTitleLower }}Controller struct {
 	{{ .FileNameTitleLower }}Service {{ .FileNameTitleLower }}.{{ .FileName }}Service
 }
 
-func (c *{{ .FileNameTitleLower }}Controller) Add(ctx *fiber.Ctx) error {
-	return middleware.ResponseSuccess(ctx, shared.RespSuccess, nil)
+func (c *{{ .FileNameTitleLower }}Controller) Add(ctx *gin.Context) error {
+	middleware.ResponseSuccess(ctx, shared.RespSuccess, res)
+    return
 }
