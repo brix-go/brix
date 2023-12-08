@@ -12,7 +12,7 @@ type {{ .FileName }} struct {
 }
 
 type {{ .FileName }}Repository interface {
-	Add() (error)
+	Add(db *gorm.DB) (error)
 
 }
 
