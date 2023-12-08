@@ -34,6 +34,8 @@ var CmdCreate = &cobra.Command{
 	Args:    cobra.ExactArgs(2),
 	Run:     runCreate,
 }
+
+var framework string
 var (
 	tplPath string
 )
@@ -44,7 +46,7 @@ func init() {
 	CmdCreateRepository.Flags().StringVarP(&tplPath, "tpl-path", "t", tplPath, "template path")
 	CmdCreateDomain.Flags().StringVarP(&tplPath, "tpl-path", "t", tplPath, "template path")
 	CmdCreateAll.Flags().StringVarP(&tplPath, "tpl-path", "t", tplPath, "template path")
-
+	CmdCreate.PersistentFlags().StringVar(&framework, "fw", "", "Specify the framework (e.g., fiber, gin)")
 }
 
 var CmdCreateController = &cobra.Command{
@@ -82,8 +84,15 @@ var CmdCreateAll = &cobra.Command{
 	Args:    cobra.ExactArgs(1),
 	Run:     runCreate,
 }
+var CmdChooseFw = &cobra.Command{
+	Use:     "fw",
+	Short:   "gen a new controller & service & repository & domain",
+	Example: "brix gen all user",
+	Run:     runCreate,
+}
 
 func runCreate(cmd *cobra.Command, args []string) {
+
 	c := NewCreate()
 	c.ProjectName = helper.GetProjectName(".")
 	c.CreateType = cmd.Use
@@ -91,24 +100,47 @@ func runCreate(cmd *cobra.Command, args []string) {
 	c.FileName = strings.ReplaceAll(strings.ToUpper(string(c.FileName[0]))+c.FileName[1:], ".go", "")
 	c.FileNameTitleLower = strings.ToLower(string(c.FileName[0])) + c.FileName[1:]
 	c.FileNameFirstChar = string(c.FileNameTitleLower[0])
+	fw, _ := cmd.Flags().GetString("fw")
+	if fw == "" || fw == "fiber" {
+		switch c.CreateType {
+		case "controller", "service", "repository", "domain":
+			c.genFile()
+		case "all":
+			c.CreateType = "controller"
+			c.genFile()
 
-	switch c.CreateType {
-	case "controller", "service", "repository", "domain":
-		c.genFile()
-	case "all":
-		c.CreateType = "controller"
-		c.genFile()
+			c.CreateType = "service"
+			c.genFile()
 
-		c.CreateType = "service"
-		c.genFile()
+			c.CreateType = "repository"
+			c.genFile()
 
-		c.CreateType = "repository"
-		c.genFile()
+			c.CreateType = "domain"
+			c.genFile()
+		default:
+			log.Fatalf("Invalid generate type: %s", c.CreateType)
+		}
+	} else if fw == "gin" {
+		switch c.CreateType {
+		case "controller", "service", "repository", "domain":
+			c.genFileGin()
+		case "all":
+			c.CreateType = "controller"
+			c.genFileGin()
 
-		c.CreateType = "domain"
-		c.genFile()
-	default:
-		log.Fatalf("Invalid generate type: %s", c.CreateType)
+			c.CreateType = "service"
+			c.genFileGin()
+
+			c.CreateType = "repository"
+			c.genFileGin()
+
+			c.CreateType = "domain"
+			c.genFileGin()
+		default:
+			log.Fatalf("Invalid generate type: %s", c.CreateType)
+		}
+	} else {
+		log.Fatalf("Invalid framework : %s", c.CreateType)
 	}
 
 }
@@ -147,6 +179,42 @@ func (c *Create) genFile() {
 	log.Printf("Created new %s: %s", c.CreateType, filePath+strings.ToLower(c.FileName)+".go")
 
 }
+
+func (c *Create) genFileGin() {
+	var f *os.File
+	filePath := c.FilePath
+	if filePath == "" {
+		filePath = fmt.Sprintf("internal/domain/%s/", strings.ToLower(c.FileName))
+	}
+	if c.CreateType != "domain" {
+		f = createFile(fmt.Sprintf("%s/%s", filePath, c.CreateType), strings.ToLower(c.FileName)+".go")
+	} else {
+		f = createFile(filePath, strings.ToLower(c.FileName)+".go")
+
+	}
+	if f == nil {
+		log.Printf("warn: file %s%s %s", filePath, strings.ToLower(c.FileName)+".go", "already exists.")
+		return
+	}
+	defer f.Close()
+	var t *template.Template
+	var err error
+	if tplPath == "" {
+		t, err = template.ParseFS(tpl.CreateTemplateFS, fmt.Sprintf("make/%s_gin.tpl", c.CreateType))
+	} else {
+		t, err = template.ParseFiles(path.Join(tplPath, fmt.Sprintf("%s_gin.tpl", c.CreateType)))
+	}
+	if err != nil {
+		log.Fatalf("generate %s error: %s", c.CreateType, err.Error())
+	}
+	err = t.Execute(f, c)
+	if err != nil {
+		log.Fatalf("generate %s error: %s", c.CreateType, err.Error())
+	}
+	log.Printf("Created new %s: %s", c.CreateType, filePath+strings.ToLower(c.FileName)+".go")
+
+}
+
 func createFile(dirPath string, filename string) *os.File {
 	filePath := filepath.Join(dirPath, filename)
 	err := os.MkdirAll(dirPath, os.ModePerm)

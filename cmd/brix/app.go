@@ -31,6 +31,7 @@ func init() {
 	gen.CmdCreate.AddCommand(gen.CmdCreateRepository)
 	gen.CmdCreate.AddCommand(gen.CmdCreateDomain)
 	gen.CmdCreate.AddCommand(gen.CmdCreateAll)
+	gen.CmdCreate.AddCommand(gen.CmdChooseFw)
 
 	//CmdRoot.AddCommand(wire.CmdWire)
 	//wire.CmdWire.AddCommand(wire.CmdWireAll)
