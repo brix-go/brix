@@ -4,7 +4,6 @@ go 1.20
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7
-	github.com/brix-go/brix v1.0.20
 	github.com/fsnotify/fsnotify v1.7.0
 	github.com/spf13/cobra v1.7.0
 )

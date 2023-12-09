@@ -5,8 +5,8 @@ package run
 
 import (
 	"fmt"
-	"github.com/brix-go/brix/config"
-	"github.com/brix-go/brix/pkg/helper"
+	"github.com/brix-go/brix/v2/config"
+	"github.com/brix-go/brix/v2/pkg/helper"
 	"log"
 	"os"
 	"os/exec"
