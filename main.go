@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/brix-go/brix/cmd/brix"
+	"github.com/brix-go/brix/v2/cmd/brix"
 )
 
 func main() {
