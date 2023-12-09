@@ -2,11 +2,11 @@ package brix
 
 import (
 	"fmt"
-	"github.com/brix-go/brix/v2/config"
-	"github.com/brix-go/brix/v2/internal/command/gen"
-	"github.com/brix-go/brix/v2/internal/command/init"
-	"github.com/brix-go/brix/v2/internal/command/run"
-	"github.com/brix-go/brix/v2/internal/command/upgrade"
+	"github.com/brix-go/brix/config"
+	"github.com/brix-go/brix/internal/command/gen"
+	"github.com/brix-go/brix/internal/command/init"
+	"github.com/brix-go/brix/internal/command/run"
+	"github.com/brix-go/brix/internal/command/upgrade"
 	"github.com/spf13/cobra"
 )
 

@@ -1,4 +1,4 @@
-module github.com/brix-go/brix/v2
+module github.com/brix-go/brix
 
 go 1.20
 

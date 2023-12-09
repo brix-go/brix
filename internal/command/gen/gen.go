@@ -2,8 +2,8 @@ package gen
 
 import (
 	"fmt"
-	tpl "github.com/brix-go/brix/v2/internal/template"
-	"github.com/brix-go/brix/v2/pkg/helper"
+	tpl "github.com/brix-go/brix/internal/template"
+	"github.com/brix-go/brix/pkg/helper"
 	"github.com/spf13/cobra"
 	"log"
 	"os"

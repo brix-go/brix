@@ -2,7 +2,7 @@ package upgrade
 
 import (
 	"fmt"
-	"github.com/brix-go/brix/v2/config"
+	"github.com/brix-go/brix/config"
 	"github.com/spf13/cobra"
 	"log"
 	"os"
