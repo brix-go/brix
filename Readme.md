@@ -3,7 +3,7 @@
 Brix is a tool used to generate Golang applications. Its name is derived from the toy "Lego Bricks," which are little components of lego that can be disassembled and reassembled to construct something desired when assembled into a single unit. in addition to brix, which may arrange components (modules) to form a Go application. Brix lets us to quickly create good go applications.
 
 ## Brix Generator
-![Brix](https://res.cloudinary.com/dkkisw3mc/image/upload/v1698561463/brix_kio7rv.png)
+![Brix](https://res.cloudinary.com/dkkisw3mc/image/upload/v1702405618/brix_yl2krk.png)
 
 ## Feature
 - Clean Architecture
